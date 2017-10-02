@@ -15,6 +15,7 @@
 <body>
 
 <script type="text/javascript">
+/*global $*/
      $.get("https://data.cityofchicago.org/resource/cdmx-wzbz.json?$limit=100", function(response) {
             //console.log(response);
             $.each(response, function(i,v) {
@@ -24,7 +25,7 @@
                var serv_req_num = v.service_request_number;
                var street = v.street_address;
                var status = v.status;
-               //check if status contains Completed:
+               //check for completion
                if(status.indexOf("Completed") >= 0){
                    Display.find('div.panel-heading').css("background-color", "green");
                }
