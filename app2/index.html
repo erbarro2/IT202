@@ -63,7 +63,7 @@
             var marker = new google.maps.Marker({
               position: {lat: parseFloat(v.latitude), lng: parseFloat(v.longitude)},
               map: map,
-              title: 'Chicago Pot Holes'
+              title: 'Pot Holes'
             });
             marker.addListener('click', function() {
               infowindow.open(map, marker);
