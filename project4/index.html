@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+        
+    <style>
+        canvas {background-color: black;}
+        
+        #Pacman {display:none;}
+    </style>
+    </head>
+    <body>
+<img id="Pacman" width = "100px" height="100px" src ="https://media.giphy.com/media/v1NPjXTqzPGnK/giphy.gif" alt="onePiece pic">
+        
+<canvas id="attribute" width="500" height="500"  style="border:1px solid #000000;">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+// global variables
+   var image = document.getElementById("Pacman");
+   var player = {mig:image, rx:350, x:300, ry: 425, y: 375, radius: 35, shape:"image", lives: 3, score: 0};
+   var harm = {x:400, y:200, color: 'red', radius: 30, shape: 'circle', score: 0};
+   var benefit = {x:200, y:200, color: 'blue', radius: 30, shape: 'circle'};
+   
+  
+    var c = document.getElementById("attribute");
+    var ctx = c.getContext("2d");  
+    ctx.font = "25px Arial";
+	ctx.fillText("Lives: " + player.lives,10, 50);
+	ctx.fillText("Score: " + player.score,10, 100);
+	
+
+
+function draw () {
+    ctx.clearRect(0,0,c.width,c.height);
+	
+	harm.y+=4;
+	benefit.y+=4;
+    drawCharacter(player);
+    drawCharacter(harm);
+    drawCharacter(benefit);
+	
+	ctx.fillText("Lives: " + player.lives,10, 50);
+	ctx.fillText("Score: " + player.score,10, 100);	
+	
+if (areColliding(player,harm)) {
+
+	harm.y = 0;
+	harm.x = Math.floor((Math.random()*c.width));
+	player.lives -= 1;
+}
+if (areColliding(player,benefit)) {
+    
+	benefit.y = 0;
+	benefit.x = Math.floor((Math.random()*c.width));
+
+	player.score++;
+}
+if (reachedEdge(harm, 'bottom')) {
+
+	harm.y = 0;
+	harm.x = Math.floor((Math.random()*c.width));
+}
+if (reachedEdge(benefit, 'bottom')) {
+
+	benefit.y = 0;
+	benefit.x = Math.floor((Math.random()*c.width));
+}
+if(endGame(player)){
+	ctx.clearRect(0,0,c.width,c.height)
+	console.log("tfxt");
+	ctx.font = "40px Arial";
+	ctx.fillText("Lives: " + player.lives,10,50);
+	ctx.fillText("Score: " + player.score,10, 100);
+	ctx.fillStyle ="white";
+	ctx.textAlign = "center";
+	ctx.fillText("GAME OVER!!!!", c.width/2, c.height/2);
+
+	return;
+}
+
+requestAnimationFrame(draw);
+}
+function drawCircle (x, y, radius, color) {
+	//
+        ctx.beginPath();
+        ctx.arc(x,y,radius,0,2*Math.PI);
+        
+        ctx.fillStyle = color;
+        ctx.fill();
+       
+       
+}
+function areColliding(character1,character2) {
+
+	var sum = character1.radius+character2.radius;
+	var dx = character1.rx - character2.x;
+	var dy = character1.ry - character2.y;
+	var distance = Math.sqrt(dx * dx + dy * dy);
+	if (distance < sum) {
+
+    return true;
+	}
+}
+function endGame(character){
+	if(character.lives == 0)
+	{return true;}
+}
+function reachedEdge(character, edge) {
+	if (edge == 'bottom' && character.y > c.height)
+		return true;
+		
+	if (edge == 'left' && (character.x < 0))
+		return true;
+	
+	if (edge == 'right' && (character.x > c.width - 100))
+		return true;
+		
+}
+function drawCharacter (character) {
+    switch (character.shape) {
+		case 'circle' :
+			drawCircle(character.x, character.y, character.radius, character.color);
+			break;
+    case 'square' :
+	
+		break;
+    case 'image' :
+		
+		ctx.drawImage(character.mig, character.x, character.y);
+		break;
+	default: 
+		console.log('character.shape case fell through');	
+}	
+} 
+
+$(document).ready(function() {
+
+	
+	document.addEventListener('keydown', (event) => {
+		const move = event.key;
+		console.log(player.x);
+		if(move == "ArrowLeft"){
+			if(!reachedEdge(player,'left')){
+				player.x -= 10;
+				player.rx -= 10;}
+		}
+		if(move == "ArrowRight"){
+			if(!reachedEdge(player,'right'))
+			{	player.x += 10;
+				player.rx += 10;}
+		}
+	},false);
+	
+    requestAnimationFrame(draw);
+});
+
+</script>
+</canvas>
+</body>
+</html>
