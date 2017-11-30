@@ -1,6 +1,11 @@
+$('#Search').show();
 var map;
 var infowindow;
 function initMap() {
+  var choice = $('#inspectSearch').val();
+  var inspectRadius = $('#radius').val();
+  $('#Search').hide();
+  $('#map').show();
   var output = document.getElementById("out");
 
   if (!navigator.geolocation){
@@ -29,17 +34,22 @@ function initMap() {
   var service = new google.maps.places.PlacesService(map);
   service.nearbySearch({
     location: here,
-    radius: 500,
+    radius:[inspectRadius],
     type: ['restaurant'],
-    keyword:['Mexican']
+    keyword:[choice]
   }, callback);
+    var db = new Dexie('LunchspotDB');
+        	// Define a schema
+        	db.version(1).stores({
+        		favorites: '++id, name, address, rating'
+        	});
+    
   }
 
   function error() {
     output.innerHTML = "Unable to retrieve your location";
   }
 
-  
 
   navigator.geolocation.getCurrentPosition(success, error);
   
@@ -63,5 +73,30 @@ function createMarker(place) {
     infowindow.open(map, this);
   });
 }
+  function addFavorite(name, address, rating)
+         {
+           alert("Added to favorites");
+           console.log(name);
+           console.log(address);
+           console.log(rating);
+        
+          db.favorites.add({
+        		name: name,
+        		address: address,
+        		rating: rating
+        	});
+         }
  
 }
+if ('serviceWorker' in navigator) {
+        console.log("Will the service worker register?");
+        navigator.serviceWorker.register('service-worker.js')
+          .then(function(reg){
+            console.log("Yes, it did.");
+          }).catch(function(err) {
+            console.log("No it didn't. This happened: ", err);
+          });
+      }
+
+
+

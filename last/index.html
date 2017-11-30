@@ -15,12 +15,11 @@
       <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
+
       #map {
         height: 80%;
       }
-      /* Optional: Makes the sample page fill the window. */
+   
       html, body {
         height: 100%;
         margin: 0;
@@ -31,6 +30,7 @@
 </head>
 
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Go Eat</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,26 +38,27 @@
   </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#Search">Search<span class="sr-only">(current)</span></a>
+            <ul class="nav navbar">
+                <li class="nav-item">
+                    <a class="nav-link" href="#Search">Search</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#map">Map</a>
                 </li>
               <li class"nav-item">
-                <a class="nav-link" href="#Review">Review</a>
+                <a class="nav-link" href="#Favorites">Favorites</a>
                   </li>
             </ul>
+          
         </div>
+      
     </nav>
 
     <div class="container screen" id="Search">
-        
 			<h1 class="mt-0">Restaurant Search</h1>
 			
 			<div class="form-group">
-				<label for="inspectFacility">Cuisine</label> <select class="form-control" id="inspectFacility">
+				<label for="inspectSearch">Cuisine</label> <select class="form-control" id="inspectSearch">
 					<option value="Mexican">
 						Mexican
 					</option>
@@ -77,9 +78,28 @@
 				</select>
 			</div>
       <div class="form-group">
-				<label for="zipCode">Zip Code</label> <input class="form-control" id="zipCode" type="text">
+				<label for="radius">Radius(Meters)</label> <select class="form-control" id="radius">
+					<option value="100">
+						100
+					</option>
+					<option value="200">
+						200
+					</option>
+					<option value="300">
+						300
+					</option>
+					<option value="400">
+						400
+					</option>
+					<option value="500">
+						500
+					</option>
+          <option value="600">
+						600
+        </option>
+				</select>
 			</div>
-      <button class="btn btn-primary" id="searchBtn"><i aria-hidden="true" class="fa fa-search"></i></button>
+      <button onclick="initMap()" class="btn btn-primary" id="searchBtn"><i aria-hidden="true" class="fa fa-search"></i></button>
 		  </div>
       <script src="https://use.fontawesome.com/24a5480fda.js"></script> 
    
@@ -87,15 +107,28 @@
 
     
     <div class="container screen" id="map">
-   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Dro33q2FMajINWVlzTiqXlTFEcHYJ3c&libraries=places&callback=initMap" async defer></script>
-
-
     </div>
-  <p><button onclick="initMap()">Show my </button></p>
-<div id="out"></div>
+<div id="out">
      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Dro33q2FMajINWVlzTiqXlTFEcHYJ3c&libraries=places&callback=initMap"
     async defer></script>
-    <div class="container screen" id="Review">Screen 3</div>
+  </div>
+  
+    <div class="container screen" id="Favorites">
+ <div class="container-fluid">
+			<p id="resultsCount"></p>
+			<div id="cardContainer">
+				<div class="card" id="template">
+					<div class="card-header">
+						Header
+					</div>
+					<div class="card-body">
+						<h4 class="card-title">Card Title</h4>
+						<p class="card-text">Card's content.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
 
     <script>
         $(document).ready(function() {
