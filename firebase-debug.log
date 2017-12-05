@@ -1,0 +1,71 @@
+[debug] [2017-11-30T22:29:56.375Z] ----------------------------------------------------------------------
+[debug] [2017-11-30T22:29:56.379Z] Command:       /home/ubuntu/.nvm/versions/node/v6.11.2/bin/node /home/ubuntu/.nvm/versions/node/v6.11.2/bin/firebase serve
+[debug] [2017-11-30T22:29:56.380Z] CLI Version:   3.15.3
+[debug] [2017-11-30T22:29:56.380Z] Platform:      linux
+[debug] [2017-11-30T22:29:56.380Z] Node Version:  v6.11.2
+[debug] [2017-11-30T22:29:56.380Z] Time:          Thu Nov 30 2017 22:29:56 GMT+0000 (UTC)
+[debug] [2017-11-30T22:29:56.380Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-30T22:29:56.394Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-30T22:29:56.395Z] > authorizing via signed-in user
+[debug] [2017-11-30T22:29:56.397Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-11-30T22:29:56.398Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/veXPpy7q9FDzGGuuKoJbzSCayxWbcphU5ZdVubYb0YI',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Thu Nov 30 2017 22:29:56 GMT+0000 (UTC)
+[debug] [2017-11-30T22:29:56.970Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-30T22:29:56.978Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/friendlychat-24126  
+ Thu Nov 30 2017 22:29:56 GMT+0000 (UTC)
+[debug] [2017-11-30T22:29:57.368Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-30T22:29:57.369Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/friendlychat-24126/tokens  
+ Thu Nov 30 2017 22:29:57 GMT+0000 (UTC)
+[debug] [2017-11-30T22:29:57.689Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/ubuntu/workspace'...
+[info] 
+[debug] [2017-11-30T22:29:57.770Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/friendlychat-24126  
+ Thu Nov 30 2017 22:29:57 GMT+0000 (UTC)
+[debug] [2017-11-30T22:29:58.166Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-30T22:29:58.167Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/496951976648/clients/_:getWebAppConfig  
+ Thu Nov 30 2017 22:29:58 GMT+0000 (UTC)
+[debug] [2017-11-30T22:29:58.380Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-30T22:29:58.402Z] TypeError: Cannot read property 'public' of undefined
+    at Server.<anonymous> (/home/ubuntu/.nvm/versions/node/v6.11.2/lib/node_modules/firebase-tools/lib/serve/hosting.js:34:17)
+    at Server.g (events.js:292:16)
+    at emitNone (events.js:86:13)
+    at Server.emit (events.js:185:7)
+    at emitListeningNT (net.js:1284:10)
+    at _combinedTickCallback (internal/process/next_tick.js:77:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:128:9)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2017-12-05T04:50:32.834Z] ----------------------------------------------------------------------
+[debug] [2017-12-05T04:50:32.840Z] Command:       /home/ubuntu/.nvm/versions/node/v6.11.2/bin/node /home/ubuntu/.nvm/versions/node/v6.11.2/bin/firebase database:set / ../initial_messages.json
+[debug] [2017-12-05T04:50:32.841Z] CLI Version:   3.15.3
+[debug] [2017-12-05T04:50:32.842Z] Platform:      linux
+[debug] [2017-12-05T04:50:32.842Z] Node Version:  v6.11.2
+[debug] [2017-12-05T04:50:32.842Z] Time:          Tue Dec 05 2017 04:50:32 GMT+0000 (UTC)
+[debug] [2017-12-05T04:50:32.842Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-12-05T04:50:32.876Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] [2017-12-05T04:50:32.877Z] > authorizing via signed-in user
+[debug] [2017-12-05T04:50:32.880Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-12-05T04:50:32.881Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/veXPpy7q9FDzGGuuKoJbzSCayxWbcphU5ZdVubYb0YI',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Tue Dec 05 2017 04:50:32 GMT+0000 (UTC)
+[debug] [2017-12-05T04:50:33.013Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-05T04:50:33.021Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/friendlychat-24126  
+ Tue Dec 05 2017 04:50:33 GMT+0000 (UTC)
+[debug] [2017-12-05T04:50:33.207Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-05T04:50:33.209Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/friendlychat-24126/tokens  
+ Tue Dec 05 2017 04:50:33 GMT+0000 (UTC)
+[debug] [2017-12-05T04:50:33.470Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-05T04:50:42.588Z] Error: ENOENT: no such file or directory, open '../initial_messages.json'
+    at Error (native)
+[error] 
+[error] Error: An unexpected error has occurred.

@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "friendlychat-24126",
+    "staging": "friendlychat-24126"
+  }
+}
