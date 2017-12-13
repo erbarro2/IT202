@@ -42,18 +42,7 @@ window.addEventListener('click', function(e) {
     e.preventDefault();
   }
 });
-window.onerror = function(message, source, line, col, error) {
-  var text = error ? error.stack || error : message + ' (at ' + source + ':' + line + ':' + col + ')';
-  errors.textContent += text + '\n';
-  errors.style.display = '';
-};
-console.error = (function(old) {
-  return function error() {
-    errors.textContent += Array.prototype.slice.call(arguments).join(' ') + '\n';
-    errors.style.display = '';
-    old.apply(this, arguments);
-  }
-})(console.error);
+
 </script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-with-addons.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js'></script>
